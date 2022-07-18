@@ -1,3 +1,4 @@
+using la_mia_pizzeria_static.ValidationAttributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,11 +16,12 @@ namespace la_mia_pizzeria_static.Models
         [StringLength(300, ErrorMessage = "Il campo seguente non deve superare i 300 caratteri")]
 
 
+        [AtLeastFiveWords]
         public string? Descrizione { get; set; }
         public string? Immagine { get; set; }
 
         [Required(ErrorMessage = "Il campo seguente è obbligatorio")]
-        [MinLength(1)]
+        [Range(1,99)]
         public double Prezzo { get; set; }
 
         public Pizza(string nome, string descrizione, string immagine, double prezzo){
